@@ -1,0 +1,19 @@
+certifi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_477u68wvzm/croot/certifi_1671487773341/work/certifi
+greenlet @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dd2bsq3kkw/croot/greenlet_1670513229760/work
+h5py==3.8.0
+importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1602276842396/work
+keras @ file:///home/ktietz/ci_310/keras_split_1643826818613/work/keras-2.6.0-py2.py3-none-any.whl
+keras-vggface==0.6
+mtcnn==0.1.1
+numpy==1.21.6
+opencv-python==4.8.1.78
+Pillow==9.5.0
+PySide6==6.5.2
+PySide6-Addons==6.5.2
+PySide6-Essentials==6.5.2
+PyYAML==6.0.1
+scipy==1.7.3
+shiboken6==6.5.2
+six==1.16.0
+SQLAlchemy @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_47054e44-1f88-4a8b-9ca4-67b36ce38181xyx8z2m5/croots/recipe/sqlalchemy_1657867866169/work
+zipp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b71z79bye2/croot/zipp_1672387125902/work
