@@ -1,5 +1,5 @@
 from pathlib import Path
-from PySide6.QtGui import Qt, QIcon, QFont
+from PySide6.QtGui import Qt, QIcon, QFont, QPixmap
 from PySide6.QtWidgets import QApplication, QWidget, QMainWindow, QDialog, QLabel, QListWidgetItem, QListWidget, QPushButton
 from UI.Data import Ui_Form
 from UI.Manager import Ui_MainWindow
@@ -8,13 +8,17 @@ from src.db import DBControl
 
 
 class Data(QWidget, Ui_Form):
+    """
+    Widget which is stored in ListWidgets, contains USERNAME, PASSWORD, SITENAME, and 3 buttons:
+    DELETE_BUTTON, OVERRIDE_BUTTON, HIDE_PASSWORD_BUTTON
+    """
 
     def __init__(self, main, user_id, db: DBControl):
         super().__init__()
         self.user_id = user_id
         self.db = db
         self.setupUi(self)
-        self.main = main
+        self.main = main     # injecting main window, just to have connection between self.
         self.item = QListWidgetItem()
         self._password = None
         self.label_password.setText("---SECURED---")
@@ -33,7 +37,7 @@ class Data(QWidget, Ui_Form):
             self.label_password.setText("---SECURED---")
 
     def change(self):
-        dialog = InputDialog()
+        dialog = InputDialog(self.main.user_id)
         if dialog.password or dialog.name or dialog.site:
             old_name = self.label_site.text()
             self.label_password.setText(dialog.password)
@@ -44,17 +48,23 @@ class Data(QWidget, Ui_Form):
 
     def delete(self):
         self.main.l_widget.takeItem(self.main.l_widget.row(self.item))
+        self.db.delete_password(self.user_id, self.label_site.text())
+        self.db.save()
 
 
 class InputDialog(QDialog, DialogInfo):
 
-    def __init__(self):
+    def __init__(self, index):
         super().__init__()
         self.setupUi(self)
         self.name = None
         self.password = None
         self.site = None
         self.to_add = False
+
+        self.le_site.setStyleSheet("background-color: white;")
+        self.le_password.setStyleSheet("background-color: white;")
+        self.le_user.setStyleSheet("background-color: white;")
 
         self.bt_save.pressed.connect(self.accept)
         self.bt_cancel.pressed.connect(self.close)
@@ -79,9 +89,10 @@ class Window(QMainWindow, Ui_MainWindow):
         self.container = []
         self.dynamic_load()
         self.setWindowTitle("Your Password Database")
+        self.setup_header()
 
     def add_item(self):
-        dialog = InputDialog()
+        dialog = InputDialog(self.user_id)
         if dialog.to_add:
             self.db.add_password(self.user_id, dialog.name, dialog.password, dialog.site)
             self.db.save()
@@ -95,14 +106,22 @@ class Window(QMainWindow, Ui_MainWindow):
         self.l_widget.addItem(data.item)
         data.item.setSizeHint(data.sizeHint())
         self.l_widget.setItemWidget(data.item, data)
-        self.container.append(data)
         self.update()
 
     def dynamic_load(self):
         items = self.db.retrieve_passwords(self.user_id)
         self.container.extend(items)
+        print(self.container)
         for i in self.container:
             _pass = i['password']
             _site = i['website']
-            _name = i['username']
+            _name = i['login']
+            print(_pass)
             self._new_item(_site, _name, _pass)
+
+    def setup_header(self):
+        image = f"../assets/{self.user_id}.jpg"
+        username = self.db.data[str(self.user_id)]['username']
+        self.label_2.setText(username)
+        self.label.setPixmap(QPixmap(image))
+        self.label.setScaledContents(True)

@@ -20,13 +20,14 @@ class DBControl:
     def add_password(self, user_id: int, login: str, password: str, website: str) -> None:
         self.data[str(user_id)]['passwords'].append({'website': website, 'login': login, 'password': password})
 
-    def add_user(self, username: str) -> None:
+    def add_user(self, username: str) -> int:
         self.data[str(self.current_user_id)] = {'username': username, 'passwords': []}
         self.current_user_id += 1
+        return self.current_user_id - 1
 
     def retrieve_passwords(self, user_id: int) -> list:
-        if self.data.get(user_id):
-            return [i for i in self.data[user_id]['passwords']]
+        if self.data.get(str(user_id)):
+            return [i for i in self.data[str(user_id)]['passwords']]
         return []
 
     def retrieve_users(self) -> list:
@@ -35,19 +36,20 @@ class DBControl:
         return []
 
     def delete_password(self, user_id: int, website: str) -> None:
-        del_index = [x for x, i in enumerate(self.data[user_id]['passwords']) if i['website'] == website]  # lista!!!
+        del_index = [x for x, i in enumerate(self.data[str(user_id)]['passwords']) if i['website'] == website]  # lista!!!
         if del_index:
-            del self.data[user_id]['passwords'][del_index[0]]
+            del self.data[str(user_id)]['passwords'][del_index[0]]
 
     def delete_user(self, user_id: int):
         if self.data.get(user_id):
             del self.data[user_id]
 
     def modify_password(self, user_id: int, old_website: str, new_website: str, new_login: str, new_password: str):
-        if self.data.get(user_id):
-            mod_index = [x for x, i in enumerate(self.data[user_id]['passwords']) if i['website'] == old_website]
+        if self.data.get(str(user_id)):
+            mod_index = [x for x, i in enumerate(self.data[str(user_id)]['passwords']) if i['website'] == old_website]
+            print(mod_index)
             if mod_index:
-                self.data[user_id]['passwords'][mod_index[0]] = {'website': new_website,
+                self.data[str(user_id)]['passwords'][mod_index[0]] = {'website': new_website,
                                                                  'login': new_login, 'password': new_password}
 
     # def _get_max_index(self):
@@ -69,5 +71,7 @@ class DBControl:
 
 if __name__ == "__main__":
     db = DBControl(Path(__file__).parent.parent / 'db.json')
-    # db.modify_password(1, 'fs', 'fdsd', 'gdfgd')
+    #db.modify_password(0, 'asda', 'fs', 'fdsd', 'gdfgd')
+    # db.add_password(0, 'asd', 'asd', 'asda')
+    #db.add_user("Robert Skrzypczyk")
     db.save()
