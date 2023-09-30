@@ -12,7 +12,8 @@ class Data(QWidget, Ui_Form):
         self.setupUi(self)
         self.main = main
         self.item = QListWidgetItem()
-        self.__password = self.label_password.text()
+        self._password = None
+        self.label_password.setText("---SECURED---")
 
         self.bt_hide.setCheckable(True)
 
@@ -22,10 +23,10 @@ class Data(QWidget, Ui_Form):
 
 
     def hide(self):
-        if self.bt_hide.isChecked():
-            self.label_password.setText("---SECURED---")
+        if not self.bt_hide.isChecked():
+            self.label_password.setText(self._password)
         else:
-            self.label_password.setText(self.__password)
+            self.label_password.setText("---SECURED---")
 
     def change(self):
         dialog = InputDialog()
@@ -83,7 +84,7 @@ class Window(QMainWindow, Ui_MainWindow):
         data = Data(self)
         data.label_mail.setText(mail)
         data.label_site.setText(site)
-        data.label_password.setText(password)
+        data._password = password
         self.l_widget.addItem(data.item)
         data.item.setSizeHint(data.sizeHint())
         self.l_widget.setItemWidget(data.item, data)
