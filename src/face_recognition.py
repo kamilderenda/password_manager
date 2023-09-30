@@ -1,6 +1,5 @@
 from pathlib import Path
 from typing import Union
-import multiprocessing
 from mtcnn.mtcnn import MTCNN
 from keras.models import Model
 from PIL import Image
@@ -14,6 +13,7 @@ THRESHOLD = 0.5
 
 
 class CameraNotFunctioning(AssertionError):
+    """Thrown when no camera is functioning"""
     pass
 
 
@@ -22,7 +22,11 @@ class FaceNotDetected(ValueError):
     pass
 
 
-def create_model():
+def create_model() -> Model:
+    """
+    Creates model used to recognise faces
+    :return:
+    """
     return VGGFace(include_top=False, model='resnet50', input_shape=(224, 224, 3), pooling='avg')
 
 
@@ -37,7 +41,7 @@ def add_face(image: Image) -> None:
     image.save(str(target_path))
 
 
-def check_saved(new_face: Image, image: Path, model: Model) -> Union[str, None]:
+def check_saved(new_face: Image, image: Path, model: Model) -> Union[int, None]:
     """
     Checks all the saved users and returns a user's index if evaluation is True.
     If none of the evaluations is true returns None
@@ -48,19 +52,25 @@ def check_saved(new_face: Image, image: Path, model: Model) -> Union[str, None]:
     """
     # images = Path(__file__).parent.parent / 'assets'
     if evaluate(new_face, Image.open(image), model):
-        return image.with_suffix("").name
+        return int(image.with_suffix("").name)
     return None
 
 
-def predict(camera_image: Image, model: Model):
-    # pool = multiprocessing.Pool()
-    predictions = []
+def predict(camera_image: Image, model: Model) -> Union[int, None]:
+    """
+    Predicts the id of the user trying to log in, if not detected return None # and create entry
+    :param camera_image:
+    :param model:
+    :return:
+    """
+    # to ma byc przyspieszone stad tez postac funckji
+    camera_image.show()
     for i in (Path(__file__).parent.parent / 'assets').iterdir():
-        # predictions.append(pool.map(check_saved, (camera_image, i, model)))
-        predictions.append(check_saved(camera_image, i, model))
-    # pool.close()
-    # pool.join()
-    print(predictions)
+        print(i)
+        res = check_saved(camera_image, i, model)
+        if res:
+            return res
+    return None
 
 
 def get_image() -> Image:
@@ -121,4 +131,4 @@ def evaluate(image1: Image, image2: Image, model: Model, threshold: int = THRESH
 if __name__ == '__main__':
     # print(evaluate(Image.open(str(Path(__file__).parent.parent / 'assets' / '1.jpg')), get_image()))
     _model = create_model()
-    predict(get_image(), _model)
+    print(predict(get_image(), _model))
