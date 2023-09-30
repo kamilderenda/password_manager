@@ -1,3 +1,4 @@
+from os import environ
 from pathlib import Path
 from typing import Union
 from mtcnn.mtcnn import MTCNN
@@ -10,6 +11,7 @@ from keras_vggface.vggface import VGGFace
 from keras_vggface.utils import preprocess_input
 
 THRESHOLD = 0.5
+environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 class CameraNotFunctioning(AssertionError):
@@ -151,4 +153,4 @@ def evaluate(image1: Image, image2: Image, model: Model, threshold: int = THRESH
 if __name__ == '__main__':
     # print(evaluate(Image.open(str(Path(__file__).parent.parent / 'assets' / '1.jpg')), get_image()))
     _model = create_model()
-    # print(predict(get_image(), _model))
+    print(predict(get_image(), _model))

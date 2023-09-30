@@ -47,10 +47,9 @@ class DBControl:
     def modify_password(self, user_id: int, old_website: str, new_website: str, new_login: str, new_password: str):
         if self.data.get(str(user_id)):
             mod_index = [x for x, i in enumerate(self.data[str(user_id)]['passwords']) if i['website'] == old_website]
-            print(mod_index)
             if mod_index:
                 self.data[str(user_id)]['passwords'][mod_index[0]] = {'website': new_website,
-                                                                 'login': new_login, 'password': new_password}
+                                                                      'login': new_login, 'password': new_password}
 
     # def _get_max_index(self):
     #    return max(self.data)
@@ -71,7 +70,7 @@ class DBControl:
 
 if __name__ == "__main__":
     db = DBControl(Path(__file__).parent.parent / 'db.json')
-    #db.modify_password(0, 'asda', 'fs', 'fdsd', 'gdfgd')
-    # db.add_password(0, 'asd', 'asd', 'asda')
-    #db.add_user("Robert Skrzypczyk")
+    db.add_user("Maciek Pabis")
+    db.add_user("Miłosz Derenda")
+    db.add_user("Natka Murzyn")
     db.save()

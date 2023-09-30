@@ -111,7 +111,6 @@ class Window(QMainWindow, Ui_MainWindow):
     def dynamic_load(self):
         items = self.db.retrieve_passwords(self.user_id)
         self.container.extend(items)
-        print(self.container)
         for i in self.container:
             _pass = i['password']
             _site = i['website']
