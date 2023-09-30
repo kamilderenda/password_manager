@@ -24,12 +24,13 @@ class Ui_Form(object):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(400, 300)
-        Form.setStyleSheet(u"background-color: #C5DFF8;")
+        Form.setStyleSheet(u"background-color: #C5DFF8;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0.176, x2:1, y2:0.824, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));")
         self.verticalLayout = QVBoxLayout(Form)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame = QFrame(Form)
         self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -40,7 +41,7 @@ class Ui_Form(object):
         font.setPointSize(20)
         font.setBold(True)
         self.label.setFont(font)
-        self.label.setStyleSheet(u"background-color: rgb(120, 149, 203);")
+        self.label.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.165, x2:1, y2:0.767, stop:0 rgba(74, 85, 162, 255), stop:1 rgba(85, 120, 162, 255));")
         self.label.setFrameShape(QFrame.WinPanel)
         self.label.setFrameShadow(QFrame.Raised)
         self.label.setAlignment(Qt.AlignCenter)
@@ -50,7 +51,7 @@ class Ui_Form(object):
         self.stackedWidget = QStackedWidget(self.frame)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setMaximumSize(QSize(16777215, 200))
-        self.stackedWidget.setStyleSheet(u"background-color: rgb(120, 149, 203);")
+        self.stackedWidget.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.165, x2:1, y2:0.75, stop:0 rgba(120, 149, 203, 255), stop:1 rgba(131, 172, 203, 255));")
         self.stackedWidget.setFrameShape(QFrame.WinPanel)
         self.stackedWidget.setFrameShadow(QFrame.Raised)
         self.page = QWidget()
@@ -72,7 +73,7 @@ class Ui_Form(object):
         font1.setBold(False)
         font1.setItalic(False)
         self.label_2.setFont(font1)
-        self.label_2.setStyleSheet(u"")
+        self.label_2.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.165, x2:1, y2:0.767, stop:0 rgba(74, 85, 162, 255), stop:1 rgba(85, 120, 162, 255));")
         self.label_2.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.label_2)
@@ -86,11 +87,14 @@ class Ui_Form(object):
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setMaximumSize(QSize(300, 100))
         font2 = QFont()
-        font2.setPointSize(12)
+        font2.setFamilies([u"Fixedsys"])
+        font2.setPointSize(15)
         font2.setBold(True)
         self.pushButton.setFont(font2)
-        self.pushButton.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(85, 255, 0);")
+        self.pushButton.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0.176, x2:1, y2:0.824, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));\n"
+"border-radius: 20px;\n"
+"border: 2px solid black;")
 
         self.horizontalLayout.addWidget(self.pushButton)
 
@@ -114,6 +118,6 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.label.setText(QCoreApplication.translate("Form", u"WELCOME!", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"Loading...", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Start", None))
+        self.pushButton.setText(QCoreApplication.translate("Form", u"PROCESS", None))
     # retranslateUi
 

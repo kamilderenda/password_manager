@@ -14,13 +14,14 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #C5DFF8;</string>
+   <string notr="true">background-color: #C5DFF8;
+background-color: qlineargradient(spread:pad, x1:0, y1:0.176, x2:1, y2:0.824, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QFrame" name="frame">
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
@@ -36,7 +37,7 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(120, 149, 203);</string>
+         <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.165, x2:1, y2:0.767, stop:0 rgba(74, 85, 162, 255), stop:1 rgba(85, 120, 162, 255));</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::WinPanel</enum>
@@ -61,7 +62,7 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(120, 149, 203);</string>
+         <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.165, x2:1, y2:0.75, stop:0 rgba(120, 149, 203, 255), stop:1 rgba(131, 172, 203, 255));</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::WinPanel</enum>
@@ -70,7 +71,7 @@
          <enum>QFrame::Raised</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page">
          <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -95,7 +96,7 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.165, x2:1, y2:0.767, stop:0 rgba(74, 85, 162, 255), stop:1 rgba(85, 120, 162, 255));</string>
             </property>
             <property name="text">
              <string>Loading...</string>
@@ -119,16 +120,19 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Fixedsys</family>
+              <pointsize>15</pointsize>
               <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(85, 255, 0);</string>
+             <string notr="true">color: rgb(0, 0, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.176, x2:1, y2:0.824, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));
+border-radius: 20px;
+border: 2px solid black;</string>
             </property>
             <property name="text">
-             <string>Start</string>
+             <string>PROCESS</string>
             </property>
            </widget>
           </item>
