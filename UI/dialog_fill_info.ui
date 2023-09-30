@@ -111,6 +111,13 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.153, x2:1, y2:0.688, st
       </item>
       <item>
        <widget class="QLineEdit" name="le_user">
+        <property name="font">
+         <font>
+          <family>Fixedsys</family>
+          <pointsize>11</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -145,6 +152,13 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.17, x2:1, y2:0.75, stop
       </item>
       <item>
        <widget class="QLineEdit" name="le_password">
+        <property name="font">
+         <font>
+          <family>Fixedsys</family>
+          <pointsize>11</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -179,6 +193,13 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.17, x2:1, y2:0.75, stop
       </item>
       <item>
        <widget class="QLineEdit" name="le_site">
+        <property name="font">
+         <font>
+          <family>Fixedsys</family>
+          <pointsize>11</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>

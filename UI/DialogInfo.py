@@ -72,6 +72,7 @@ class Ui_Form(object):
 
         self.le_user = QLineEdit(self.frame_2)
         self.le_user.setObjectName(u"le_user")
+        self.le_user.setFont(font)
         self.le_user.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.le_user)
@@ -89,6 +90,7 @@ class Ui_Form(object):
 
         self.le_password = QLineEdit(self.frame_2)
         self.le_password.setObjectName(u"le_password")
+        self.le_password.setFont(font)
         self.le_password.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.le_password)
@@ -106,6 +108,7 @@ class Ui_Form(object):
 
         self.le_site = QLineEdit(self.frame_2)
         self.le_site.setObjectName(u"le_site")
+        self.le_site.setFont(font)
         self.le_site.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.le_site)

@@ -76,7 +76,6 @@ def predict(camera_image: Image, model: Model) -> Union[int, None]:
     # to ma byc przyspieszone stad tez postac funckji
     camera_image.show()
     for i in (Path(__file__).parent.parent / 'assets').iterdir():
-        print(i)
         res = check_saved(camera_image, i, model)
         if res:
             return res

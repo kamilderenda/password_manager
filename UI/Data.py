@@ -33,6 +33,7 @@ class Ui_Form(object):
         self.frame_4 = QFrame(Form)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setMaximumSize(QSize(16777215, 80))
+        self.frame_4.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.165, x2:1, y2:0.75, stop:0 rgba(120, 149, 203, 255), stop:1 rgba(128, 174, 203, 255));")
         self.frame_4.setFrameShape(QFrame.WinPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.frame_4.setLineWidth(1)
@@ -40,7 +41,8 @@ class Ui_Form(object):
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.frame_5 = QFrame(self.frame_4)
         self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setMaximumSize(QSize(150, 16777215))
+        self.frame_5.setMaximumSize(QSize(200, 16777215))
+        self.frame_5.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.239, x2:1, y2:0.727273, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));")
         self.frame_5.setFrameShape(QFrame.WinPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.frame_5)
@@ -62,7 +64,8 @@ class Ui_Form(object):
         self.frame = QFrame(self.frame_4)
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(0, 0))
-        self.frame.setMaximumSize(QSize(250, 50))
+        self.frame.setMaximumSize(QSize(400, 50))
+        self.frame.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.239, x2:1, y2:0.727273, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));")
         self.frame.setFrameShape(QFrame.WinPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame)
@@ -70,7 +73,7 @@ class Ui_Form(object):
         self.label_mail = QLabel(self.frame)
         self.label_mail.setObjectName(u"label_mail")
         self.label_mail.setMinimumSize(QSize(230, 0))
-        self.label_mail.setMaximumSize(QSize(230, 16777215))
+        self.label_mail.setMaximumSize(QSize(350, 16777215))
         self.label_mail.setFont(font)
 
         self.horizontalLayout_3.addWidget(self.label_mail)
@@ -81,7 +84,8 @@ class Ui_Form(object):
         self.frame_2 = QFrame(self.frame_4)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setMinimumSize(QSize(0, 0))
-        self.frame_2.setMaximumSize(QSize(180, 50))
+        self.frame_2.setMaximumSize(QSize(400, 50))
+        self.frame_2.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.239, x2:1, y2:0.727273, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));")
         self.frame_2.setFrameShape(QFrame.WinPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_2)
@@ -89,7 +93,7 @@ class Ui_Form(object):
         self.label_password = QLabel(self.frame_2)
         self.label_password.setObjectName(u"label_password")
         self.label_password.setMinimumSize(QSize(160, 0))
-        self.label_password.setMaximumSize(QSize(160, 16777215))
+        self.label_password.setMaximumSize(QSize(350, 16777215))
         self.label_password.setFont(font)
         self.label_password.setFrameShape(QFrame.NoFrame)
 
@@ -110,6 +114,11 @@ class Ui_Form(object):
         self.bt_change.setObjectName(u"bt_change")
         self.bt_change.setMinimumSize(QSize(30, 30))
         self.bt_change.setMaximumSize(QSize(30, 30))
+        self.bt_change.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.239, x2:1, y2:0.727273, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));")
+        icon = QIcon()
+        icon.addFile(u"../UI/images/pen.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_change.setIcon(icon)
+        self.bt_change.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_2.addWidget(self.bt_change)
 
@@ -117,6 +126,11 @@ class Ui_Form(object):
         self.bt_del.setObjectName(u"bt_del")
         self.bt_del.setMinimumSize(QSize(30, 30))
         self.bt_del.setMaximumSize(QSize(30, 30))
+        self.bt_del.setFont(font)
+        self.bt_del.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.239, x2:1, y2:0.727273, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));")
+        icon1 = QIcon()
+        icon1.addFile(u"../UI/images/bin.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_del.setIcon(icon1)
 
         self.horizontalLayout_2.addWidget(self.bt_del)
 
@@ -124,6 +138,10 @@ class Ui_Form(object):
         self.bt_hide.setObjectName(u"bt_hide")
         self.bt_hide.setMinimumSize(QSize(30, 30))
         self.bt_hide.setMaximumSize(QSize(30, 30))
+        self.bt_hide.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.239, x2:1, y2:0.727273, stop:0 rgba(197, 223, 248, 255), stop:1 rgba(160, 191, 224, 255));")
+        icon2 = QIcon()
+        icon2.addFile(u"../UI/images/eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_hide.setIcon(icon2)
 
         self.horizontalLayout_2.addWidget(self.bt_hide)
 
@@ -144,8 +162,8 @@ class Ui_Form(object):
         self.label_site.setText(QCoreApplication.translate("Form", u"---EMPTY---", None))
         self.label_mail.setText(QCoreApplication.translate("Form", u"---EMPTY---", None))
         self.label_password.setText(QCoreApplication.translate("Form", u"---EMPTY---", None))
-        self.bt_change.setText(QCoreApplication.translate("Form", u"*", None))
-        self.bt_del.setText(QCoreApplication.translate("Form", u"-", None))
-        self.bt_hide.setText(QCoreApplication.translate("Form", u"?", None))
+        self.bt_change.setText("")
+        self.bt_del.setText("")
+        self.bt_hide.setText("")
     # retranslateUi
 
