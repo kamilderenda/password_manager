@@ -16,13 +16,12 @@ class DBControl:
             self.file_path.touch()
             self.data = {}'''
         self.data = self.load_data()
-        print(self.current_user_id)
 
     def add_password(self, user_id: int, login: str, password: str, website: str) -> None:
-        self.data[user_id]['passwords'].append({'website': website, 'login': login, 'password': password})
+        self.data[str(user_id)]['passwords'].append({'website': website, 'login': login, 'password': password})
 
     def add_user(self, username: str) -> None:
-        self.data[self.current_user_id] = {'username': username, 'passwords': []}
+        self.data[str(self.current_user_id)] = {'username': username, 'passwords': []}
         self.current_user_id += 1
 
     def retrieve_passwords(self, user_id: int) -> list:
@@ -44,11 +43,11 @@ class DBControl:
         if self.data.get(user_id):
             del self.data[user_id]
 
-    def modify_password(self, user_id: int, website: str, new_login: str, new_password: str):
+    def modify_password(self, user_id: int, old_website: str, new_website: str, new_login: str, new_password: str):
         if self.data.get(user_id):
-            mod_index = [x for x, i in enumerate(self.data[user_id]['passwords']) if i['website'] == website]
+            mod_index = [x for x, i in enumerate(self.data[user_id]['passwords']) if i['website'] == old_website]
             if mod_index:
-                self.data[user_id]['passwords'][mod_index[0]] = {'website': website,
+                self.data[user_id]['passwords'][mod_index[0]] = {'website': new_website,
                                                                  'login': new_login, 'password': new_password}
 
     # def _get_max_index(self):
@@ -70,9 +69,5 @@ class DBControl:
 
 if __name__ == "__main__":
     db = DBControl(Path(__file__).parent.parent / 'db.json')
-    db.add_user('gh')
-    db.add_user('jhg')
-    # db.add_password(1, 'log2', 'pass2', 'web1')
-    # db.modify_password(0, 'web2', 'log1', 'pass43')
-    # print(db.retrieve_users())
+    # db.modify_password(1, 'fs', 'fdsd', 'gdfgd')
     db.save()

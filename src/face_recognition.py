@@ -74,11 +74,14 @@ def predict(camera_image: Image, model: Model) -> Union[int, None]:
     :rtype: list[int, None]
     """
     # to ma byc przyspieszone stad tez postac funckji
-    camera_image.show()
+    # camera_image.show()
     for i in (Path(__file__).parent.parent / 'assets').iterdir():
         res = check_saved(camera_image, i, model)
         if res:
             return res
+    max_index = max(int(x.with_suffix('').name) for x in (Path(__file__).parent.parent / 'assets').iterdir())
+    new_path = Path(__file__).parent.parent / 'assets' / f'{max_index + 1}.jpg'
+    camera_image.save(str(new_path))
     return None
 
 
@@ -148,4 +151,4 @@ def evaluate(image1: Image, image2: Image, model: Model, threshold: int = THRESH
 if __name__ == '__main__':
     # print(evaluate(Image.open(str(Path(__file__).parent.parent / 'assets' / '1.jpg')), get_image()))
     _model = create_model()
-    print(predict(get_image(), _model))
+    # print(predict(get_image(), _model))
